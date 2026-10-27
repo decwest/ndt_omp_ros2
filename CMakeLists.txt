@@ -6,7 +6,7 @@ project(ndt_omp_ros2)
 #set(CMAKE_CXX_FLAGS "-std=c++14 -msse -msse2 -msse3 -msse4 -msse4.1 -msse4.2")
 
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 20)
 endif()
 
 # pcl 1.7 causes a segfault when it is built with debug mode
@@ -67,9 +67,9 @@ target_link_libraries(align
   ndt_omp
 )
 
-ament_target_dependencies(align
-  rclcpp
-  std_msgs
+target_link_libraries(align
+  ${rclcpp_TARGETS}
+  ${std_msgs_TARGETS}
 )
 
 ############
